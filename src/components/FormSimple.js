@@ -4,7 +4,12 @@ export default class FormSimple extends Component {
     //necesitamos una variable de referencia para cada objeto del formulario
     cajaNombre = React.createRef();
     peticionFormulario = (event) => {
+        //Detenemos el submit del formulario
+        event.preventDefault();
     console.log("Formulario enviado");
+    //RECUPERAR EL VALOR DE UN OBJETO REACT:
+    let nombre=this.cajaNombre.current.value;
+    console.log("El nombre es: "+nombre);
     }
   render() {
     return (
