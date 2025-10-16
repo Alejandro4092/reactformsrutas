@@ -1,27 +1,48 @@
 import React, { Component } from 'react'
 
-export default class TablaMultiplicar extends Component {
- cajaNumero = React.createRef();
+export default class TablaMultiplicarv2 extends Component {
+selectNumero = React.createRef();
  generarTabla = (event) => {
     event.preventDefault();
-    let numero = parseInt(this.cajaNumero.current.value);
+    let numero = parseInt(this.selectNumero.current.value);
     let aux = [];
     for(let i=1;i<=10;i++){
         aux.push(numero*i);
     }
     this.setState({ numeros: aux });
  }
+ generarRandoms=()=>{
+    for(let i=1;i<=5;i++){
+        var random=parseInt(Math.random()*50)+1;
+        this.numero.push(random);
+
+    }
+
+ }
  state = {
-    numeros: []
+    numeros: [],
+    
   }
+  //Lo quitamos de state porque no hace falta que se renderice cada vez que cambie solo para añadirlos al select
+  numero=[]
 
   render() {
     return (
       <div>
-        <div>Tabla de multiplicar</div>
-        <h1>Tabla de multiplicar</h1>
+     
+        <h1>Tabla de multiplicar v2</h1>
+        {this.generarRandoms()}
+      
         <form onSubmit={this.generarTabla}>
-            <input type="number" ref={this.cajaNumero} />
+        <select ref={this.selectNumero}>
+            {
+                this.numero.map((num,index)=>{
+                    return(
+                        <option key={index} value={num}>{num}</option>)
+                })
+            }
+
+        </select>
         <button>Generar tabla</button>
         </form>
           <table border="1">
@@ -36,7 +57,7 @@ export default class TablaMultiplicar extends Component {
               {this.state.numeros.map((num,index)=>{
                 return (
                   <tr key={index}>
-                    <td>{this.cajaNumero.current.value}*{index+1}</td>
+                    <td>{this.selectNumero.current.value}*{index+1}</td>
                     <td>{num}</td>
                     
                   </tr>
