@@ -9,6 +9,8 @@ export default class MenuRutas extends Component {
           <li><a href="/cine">Cine</a></li>
           <li><a href="/musica">Música</a></li>
           <li><a href="/formsimple">Form simple</a></li>
+          <li><a href="/collatz">Collatz</a></li>
+          <li><a href="/tablamultiplicar">Tabla de multiplicar</a></li>
         </ul>
       </div>
     )
